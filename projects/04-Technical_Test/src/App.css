@@ -1,0 +1,22 @@
+main {
+	margin: 0 auto;
+	display: flex;
+	place-items: center;
+	flex-direction: column;
+	max-width: 800px;
+	font-family: system-ui;
+}
+
+/*Horizontal Display
+section {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+}
+
+section img {
+	max-width: 320px;
+	height: auto;
+}
+*/
