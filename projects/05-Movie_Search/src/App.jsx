@@ -1,15 +1,20 @@
 import './App.css'
 import { useMovies } from './hooks/useMovies.js'
 import { Movies } from './components/Movies.jsx'
+import { useState } from 'react'
 
 function App() {
 	const { movies } = useMovies()
+	const { query, setQuery } = useState('')
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		const fields = new window.FormData(event.target)
-		const query = fields.get('query')
-		console.log(query)
+		const { query } = Object.fromEntries(new window.FormData(event.target))
+		console.log({ query })
+	}
+
+	const handleChange = (event) => {
+		setQuery(event.target.value)
 	}
 
 	return (
@@ -17,7 +22,12 @@ function App() {
 			<header>
 				<h1>Movie Search</h1>
 				<form className='form' onSubmit={handleSubmit}>
-					<input name='query' placeholder='Avengers, Avatar, Jumanji...' />
+					<input
+						onChange={handleChange}
+						value={query}
+						name='query'
+						placeholder='Avengers, Avatar, Jumanji...'
+					/>
 					<button type='submit'>Search</button>
 				</form>
 			</header>
